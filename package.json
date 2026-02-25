@@ -1,0 +1,5 @@
+{
+  "name": "ecom",
+  "private": true,
+  "workspaces": ["frontend", "backend"]
+}
