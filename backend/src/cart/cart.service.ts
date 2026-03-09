@@ -1,8 +1,13 @@
 import { Injectable } from '@nestjs/common';
 import { RedisService } from '../redis/redis.service';
+import { Field, Int, ObjectType } from '@nestjs/graphql';
 
-export interface CartItem {
+@ObjectType()
+export class CartItem {
+  @Field()
   productId: string;
+  
+  @Field(() => Int)
   quantity: number;
 }
 

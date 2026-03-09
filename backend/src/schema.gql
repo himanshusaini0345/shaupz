@@ -2,6 +2,15 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type Cart {
+  items: [CartItemView!]!
+}
+
+type CartItemView {
+  product: Product!
+  quantity: Int!
+}
+
 type Order {
   id: ID!
   items: [OrderItem!]!
@@ -33,6 +42,7 @@ type ProductPage {
 }
 
 type Query {
+  getCart: Cart!
   getOrderById(id: String!): Order
   getProducts(limit: Int! = 12, page: Int! = 1, search: String): ProductPage!
   getUserOrders(sessionId: String!): [Order!]!
