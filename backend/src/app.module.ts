@@ -17,8 +17,7 @@ import { CheckoutModule } from './checkout/checkout.module';
       inject: [ConfigService],
       useFactory: (configService: ConfigService) => ({
         uri:
-          configService.get<string>('MONGODB_URI') ||
-          'mongodb://localhost:27017,localhost:27018,localhost:27019/ecom?replicaSet=rs0'
+          configService.get<string>('MONGODB_URI')
       })
     }),
     GraphQLModule.forRoot<ApolloDriverConfig>({

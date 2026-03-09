@@ -1,0 +1,24 @@
+###
+POST http://localhost:3001/graphql
+Content-Type: application/json
+
+{
+  "query": "query { getProducts(search:\"t\") { total page limit items { id name price description} } }"
+}
+
+###
+POST http://localhost:3001/cart/add
+Content-Type: application/json
+x-session-id: hima-0159
+
+{
+    "productId": "69aea2eb867fce1e2da719f3",
+    "quantity":4
+}
+
+###
+POST http://localhost:3001/checkout
+Content-Type: application/json
+x-session-id: hima-0159
+idempotency-key: 123
+

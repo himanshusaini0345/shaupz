@@ -21,12 +21,16 @@ export class ProductsService {
       this.productModel
         .find(query)
         .skip((page - 1) * limit)
-        .limit(limit)
-        .lean(),
-      this.productModel.countDocuments(query)
+        .limit(limit),
+      this.productModel.countDocuments(query),
     ]);
 
-    const response = { items, total, page, limit };
+    const response = {
+      items,
+      total,
+      page,
+      limit,
+    };
     await this.redisService.set(cacheKey, response, 120);
     return response;
   }

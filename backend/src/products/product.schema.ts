@@ -9,7 +9,7 @@ export type ProductDocument = HydratedDocument<Product>;
 export class Product {
   @Field(() => ID)
   id: string;
-
+  
   @Field()
   @Prop({ required: true })
   name: string;
@@ -28,3 +28,12 @@ export class Product {
 }
 
 export const ProductSchema = SchemaFactory.createForClass(Product);
+
+ProductSchema.virtual("id").get(function () {
+  return this._id.toHexString();
+});
+
+ProductSchema.set("toJSON", { virtuals: true });
+ProductSchema.set("toObject", {
+  virtuals: true,
+});
