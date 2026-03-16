@@ -1,0 +1,49 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Cart {
+  items: [CartItemView!]!
+}
+
+type CartItemView {
+  product: Product!
+  quantity: Int!
+}
+
+type Order {
+  id: ID!
+  items: [OrderItem!]!
+  sessionId: String!
+  status: String!
+  totalAmount: Float!
+}
+
+type OrderItem {
+  name: String!
+  price: Float!
+  productId: ID!
+  quantity: Float!
+}
+
+type Product {
+  description: String!
+  id: ID!
+  name: String!
+  price: Float!
+  stock: Int!
+}
+
+type ProductPage {
+  items: [Product!]!
+  limit: Int!
+  page: Int!
+  total: Int!
+}
+
+type Query {
+  getCart: Cart!
+  getOrderById(id: String!): Order
+  getProducts(limit: Int! = 12, page: Int! = 1, search: String): ProductPage!
+  getUserOrders(sessionId: String!): [Order!]!
+}
